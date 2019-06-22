@@ -9,16 +9,16 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
     {
         protected string name;            // Наименование 
         protected string model;           // модель
-        protected double weight;          // вес самолета: кг
+        protected int weight;          // вес самолета: кг
         protected int flightTime;         // максимальное время полета: тик времени
         protected int serviceTime;        // время обслуживание в аэропарту:  тик времени
         protected int speed;              // рассотояние за один тик времени
         protected int maxFuel;            // максимум топлива
-        protected double fuelConsumption; // потребление топлива за 1 тик на кг веса
-        protected double fuel;            // количество топлива на самолете: кг
+        protected int fuelConsumption; // потребление топлива за 1 тик на кг веса
+        protected int fuel;            // количество топлива на самолете: кг
 
 
-        public Aircraft(string name, string model, double weight, int flightTime, int serviceTime, int speed, int maxFuel, double fuelConsumption, double fuel)
+        public Aircraft(string name, string model, int weight, int flightTime, int serviceTime, int speed, int maxFuel, int fuelConsumption, int fuel)
         {   // инициализация
             this.name = name;
             this.model = model;
@@ -32,8 +32,8 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
         }
         public Aircraft(Aircraft air, string name)
         {
-            air.getAll(out string n, out string model, out double weight, out int flightTime, out int serviceTime,
-                out int speed, out int maxFuel, out double fuelConsumption, out double fuel);
+            air.getAll(out string n, out string model, out int weight, out int flightTime, out int serviceTime,
+                out int speed, out int maxFuel, out int fuelConsumption, out int fuel);
             this.name = name;
             this.model = model;
             this.weight = weight;
@@ -45,17 +45,18 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
             this.fuel = fuel;
         }
 
-        public double GetRateFuel // текущий расход топлива за тик
+        public int GetRateFuel // текущий расход топлива за тик
         {
-            get {
-                double rate;
-                rate = (weight + fuel) * fuelConsumption;
+            get
+            {
+                int rate;
+                rate = fuelConsumption * (weight + fuel) / weight;
                 return rate;
             }
         }
 
-        public void getAll(out string name, out string model, out double weight, out int flightTime, out int serviceTime,
-            out int speed, out int maxFuel, out double fuelConsumption, out double fuel)
+        public void getAll(out string name, out string model, out int weight, out int flightTime, out int serviceTime,
+            out int speed, out int maxFuel, out int fuelConsumption, out int fuel)
         {
             name = this.name;
             model = this.model;
@@ -76,8 +77,8 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
         public WarAircraft(Aircraft air, string name) : base(air, name)
         {
         }
-        public WarAircraft(string name, string model, double weight, int flightTime, int serviceTime,
-             int speed, int maxFuel, double fuelConsumption, double fuel) : base(name, model, weight, flightTime, serviceTime,
+        public WarAircraft(string name, string model, int weight, int flightTime, int serviceTime,
+             int speed, int maxFuel, int fuelConsumption, int fuel) : base(name, model, weight, flightTime, serviceTime,
              speed, maxFuel, fuelConsumption, fuel)
         {
         }
@@ -91,24 +92,24 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
         {
         }
 
-        public WalkingAircraft(string name, string model, double weight, int flightTime, int serviceTime,
-         int speed, int maxFuel, double fuelConsumption, double fuel) : base(name, model, weight, flightTime, serviceTime,
+        public WalkingAircraft(string name, string model, int weight, int flightTime, int serviceTime,
+         int speed, int maxFuel, int fuelConsumption, int fuel) : base(name, model, weight, flightTime, serviceTime,
          speed, maxFuel, fuelConsumption, fuel)     {         }
     }
 
     public class CargoAircraft : Aircraft  
     {
         private const string type = "cargo"; // тип грузовой
-        private double cargo = 0;
-        private double maxCargo;
+        private int cargo = 0;
+        private int maxCargo;
 
-        public CargoAircraft(Aircraft air, string name, double maxCargo) : base(air, name)
+        public CargoAircraft(Aircraft air, string name, int maxCargo) : base(air, name)
         {
             this.maxCargo = maxCargo;
         }
 
-         public CargoAircraft(string name, string model, double weight, int flightTime, int serviceTime,
-         int speed, int maxFuel, double fuelConsumption, double fuel, double maxCargo) : base(name, model, weight, flightTime, serviceTime,
+         public CargoAircraft(string name, string model, int weight, int flightTime, int serviceTime,
+         int speed, int maxFuel, int fuelConsumption, int fuel, int maxCargo) : base(name, model, weight, flightTime, serviceTime,
          speed, maxFuel, fuelConsumption, fuel)
             {
                 this.maxCargo = maxCargo;
@@ -118,7 +119,7 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
             get
             {
                 double rate;
-                rate = (weight + fuel+ cargo) * fuelConsumption;
+                rate = fuelConsumption  * (weight + fuel + cargo) / weight; 
                 return rate;
             }
         }
@@ -135,8 +136,8 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
             this.maxPassenger = maxPassenger;
         }
 
-        public PassengerAircraft(string name, string model, double weight, int flightTime, int serviceTime,
-         int speed, int maxFuel, double fuelConsumption, double fuel, int maxPassenger) : base(name, model, weight, flightTime, serviceTime,
+        public PassengerAircraft(string name, string model, int weight, int flightTime, int serviceTime,
+         int speed, int maxFuel, int fuelConsumption, int fuel, int maxPassenger) : base(name, model, weight, flightTime, serviceTime,
          speed, maxFuel, fuelConsumption, fuel )
             {
                 this.maxPassenger = maxPassenger;
@@ -146,7 +147,7 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
             get
             {
                 double rate;
-                rate = (weight + fuel + passenger * 0.1) * fuelConsumption;
+                rate = fuelConsumption*(weight + fuel + (passenger * 100)) / weight;
                 return rate;
             }
         }

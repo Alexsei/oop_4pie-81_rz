@@ -12,15 +12,37 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
 {
     public partial class Form1 : Form
     {
-        List<object> listAirModel = new List<object>();
-
+        List<Aircraft> listAirModel = new List<Aircraft>();
+        List<Airport> listAirports = new List<Airport>();
 
         public Form1()
         {
             InitializeComponent();
             initListAirModelDefault();
+            initlistAirports();
+            initAirs();
         }
 
+        public void initAirs()
+        {
+            WarAircraft newAit = new WarAircraft(listAirModel[11], "тр777");
+            listAirports[0].addAirInDock(newAit);
+        }
+
+        public void initlistAirports()
+        {
+            // Airport(string name , int maxDocks, int x, int y)
+            listAirports.Add(new Airport("Центральный", 10, 5000, 5000));
+            listAirports.Add(new Airport("Северный", 10, 5000, 6000));
+            listAirports.Add(new Airport("южный", 10, 5000, 4000));
+            listAirports.Add(new Airport("восточный", 10, 6000, 5000));
+            listAirports.Add(new Airport("западный", 10, 4000, 5000));
+            listAirports.Add(new Airport("Сев-Зап", 5, 4500, 5500));
+            listAirports.Add(new Airport("Сев-Вос", 5, 5500, 5500));
+            listAirports.Add(new Airport("Юг-Зап", 5, 4500, 4500));
+            listAirports.Add(new Airport("Юг-Вос", 5, 5500, 4500));
+
+        }
         public void initListAirModelDefault()
         {   // инициализация моделей по молчанию
 

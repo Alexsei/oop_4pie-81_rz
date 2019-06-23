@@ -55,6 +55,20 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
             }
         }
 
+        public int Fuel
+        {
+            get  {
+                return this.fuel;
+            }
+        }
+
+        public int ServTime
+        {
+            get            {
+                return this.serviceTime;
+            }
+        }
+
         public void getAll(out string name, out string model, out int weight, out int flightTime, out int serviceTime,
             out int speed, out int maxFuel, out int fuelConsumption, out int fuel)
         {

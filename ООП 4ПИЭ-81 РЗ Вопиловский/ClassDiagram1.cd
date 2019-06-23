@@ -1,56 +1,59 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="ООП_4ПИЭ_81_РЗ_Вопиловский.Airport">
-    <Position X="0.5" Y="1" Width="1.5" />
+    <Position X="2.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAABgAAAAAAA=</HashCode>
+      <HashCode>AAAACQAAAAAQAAAACAAAAAQAIAAEAAAAAgBgAAAAYAA=</HashCode>
       <FileName>Airport.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ООП_4ПИЭ_81_РЗ_Вопиловский.Aircraft">
-    <Position X="2.25" Y="1" Width="1.5" />
+    <Position X="4.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAIgAAAAAAAAAAACAAAAAAAAHAQAgAAAAAAIIAAA=</HashCode>
+      <HashCode>AQAAAIgAAAAEAAAAAACAAAAAAAAHAQAgAgAAAAIIAAA=</HashCode>
       <FileName>Aircraft.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ООП_4ПИЭ_81_РЗ_Вопиловский.WarAircraft">
-    <Position X="4" Y="1" Width="1.5" />
+    <Position X="7" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Aircraft.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="System.Object" Collapsed="true">
-    <Position X="7.75" Y="0.75" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
   <Class Name="ООП_4ПИЭ_81_РЗ_Вопиловский.WalkingAircraft">
-    <Position X="4" Y="3" Width="1.5" />
+    <Position X="6.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Aircraft.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ООП_4ПИЭ_81_РЗ_Вопиловский.CargoAircraft">
-    <Position X="3.75" Y="5" Width="1.5" />
+    <Position X="6.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAEABAAAAAAAAAQAAAAA=</HashCode>
       <FileName>Aircraft.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ООП_4ПИЭ_81_РЗ_Вопиловский.PassengerAircraft">
-    <Position X="0.5" Y="4.75" Width="1.5" />
+    <Position X="4.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAACIAAAAAAAAAAAAAAAAAAAAABAAAAAAAgAAAAAAA=</HashCode>
       <FileName>Aircraft.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ООП_4ПИЭ_81_РЗ_Вопиловский.Flight">
-    <Position X="6" Y="1.5" Width="1.5" />
+    <Position X="9.25" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAQAAAAAAAAAAAIAAAAAAAAAAAAAAAAABgACAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAgIAAAAAAAAAAAAAAAIABgAAAAAAA=</HashCode>
       <FileName>Flight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ООП_4ПИЭ_81_РЗ_Вопиловский.Docks">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAAAEEAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Airport.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

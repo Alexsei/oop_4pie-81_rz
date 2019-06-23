@@ -8,10 +8,18 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
 {
     public class Flight
     {
-        private readonly Airport target;
-        private readonly Airport outset;
+        private Airport target;
+        private Airport start;
         private int x;
         private int y;
-        private readonly object board;
+        private object board;
+
+        Flight(Airport target, Airport start, object board)
+        {
+            this.target = target;
+            this.start = start;
+            this.board = board;
+
+        }
     }
 }

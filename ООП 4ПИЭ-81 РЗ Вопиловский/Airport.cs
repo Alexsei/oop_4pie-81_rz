@@ -15,14 +15,20 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
         private int busyDocks = 0; // количество занятых доков
         private string name;      // наименование аэропорта
         private Docks[] airDocks; // массив доков для самолетов
+        private int type;      // тип аэропорта: 1 - гражданский, 0 - военный
 
-        public Airport(string name , int maxDocks, int x, int y)
+        public Airport(string name , int maxDocks, int x, int y, int type)
         {
             this.name = name;
             this.maxDocks = maxDocks;
             this.x = x;
             this.y = y;
+            this.type = type;
             this.airDocks = new Docks[maxDocks];
+            for (int i=0; i < this.maxDocks; i++)
+            {
+                this.airDocks[i] = new Docks();
+            }
         }
 
         public int X
@@ -39,33 +45,55 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
             }
         }
 
-        public string Name
+        public string Name  // наименование
         {
             get            {
                 return this.name;
             }
         }
 
-        public int FreeDocks
+        public int FreeDocks // свободных доков
         {
             get            {
                 return this.maxDocks - this.busyDocks;
             }
         }
 
+        public int MaxDocks  // максимум доков
+        {
+            get
+            {
+                return this.maxDocks;
+            }
+        }
+
+        public int Type  // тип аэропорта
+        {
+            get
+            {
+                return this.type;
+            }
+        }
+
+        public Docks getAirDocks(int id)
+        {
+            return airDocks[id];
+        }
+
         public bool addAirInDock(Aircraft air)
         {
-            if (this.busyDocks != 0)
+            if (this.FreeDocks != 0)
             {
                 for (int i = 0; i < airDocks.Length; i++)
                 {
+                    if (airDocks[i]== null) { airDocks[i] = new Docks(); };
                     if (airDocks[i].Status == 0)  // если док свободен
                     {
                         airDocks[i].Status = 1;
                         airDocks[i].ServiceTime = air.ServTime;
                         airDocks[i].Air = air;
-                        this.busyDocks--;
-                        Console.WriteLine("гуд");
+                        this.busyDocks++;
+                        Console.WriteLine(air.Name);
                         return true;
                         break;
                     }
@@ -79,7 +107,12 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
     {
         private int status;      // 0- свободен  ; 1- обслуживание  ;  2 - готовый
         private int serviceTime; // осталось времени на обслуживание
-        private Aircraft air = null;  // самолет
+        private Aircraft air;  // самолет
+
+        public Docks()
+        {
+            this.status = 0;
+        }
 
         public int Status
         {

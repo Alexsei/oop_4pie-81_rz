@@ -45,7 +45,7 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
             this.fuel = fuel;
         }
 
-        public int GetRateFuel // текущий расход топлива за тик
+        public int RateFuel // текущий расход топлива за тик
         {
             get
             {
@@ -55,18 +55,60 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
             }
         }
 
-        public int Fuel
+        public int Fuel // остаток топлива
         {
             get  {
                 return this.fuel;
             }
+            set 
+            {
+                this.fuel = value;
+            }
         }
 
-        public int ServTime
+        public int ServTime // время обслуживания
         {
             get            {
                 return this.serviceTime;
             }
+        }
+
+        public string Name // наименование
+        {
+            get
+            {
+                return this.name;
+            }
+        }
+
+        public string Model // модель
+        {
+            get
+            {
+                return this.model;
+            }
+        }
+
+        public int FlightTime  // максимальное время полета
+        {
+            get
+            {
+                return this.flightTime;
+            }
+        }
+
+        public int Speed  // Скорость самолета
+        {
+            get
+            {
+                return this.speed;
+            }
+        }  // 
+
+        public int FuelConsumption
+        {
+            get => default;
+
         }
 
         public void getAll(out string name, out string model, out int weight, out int flightTime, out int serviceTime,

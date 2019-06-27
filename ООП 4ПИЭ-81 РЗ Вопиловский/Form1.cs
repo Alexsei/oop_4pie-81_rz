@@ -18,6 +18,8 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
         List<Aircraft> listAirModelWal = new List<Aircraft>(); // список прогулочных самолетов
         List<Airport> listAirports = new List<Airport>();
         List<Flight> listFlights = new List<Flight>();
+        List<Crash> listCrash = new List<Crash>();
+        StepTime dispStepTime;
 
         public Form1()
         {
@@ -27,6 +29,7 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
             initAirs();
             viewListAirports();
             viewListPAirs(0);
+            dispStepTime = new StepTime(listAirports, listFlights, listCrash);
         }
 
         public void initAirs()  // инициализация списка самолетов (Рандом)
@@ -64,16 +67,16 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
 
         public void initListAirports()  // инициализация списка аэропортов
         {
-            // Airport(string name , int maxDocks, int x, int y, int type)
-            listAirports.Add(new Airport("Центральный", 10, 5000, 5000, 1));
-            listAirports.Add(new Airport("Северный", 10, 5000, 6000, 1));
-            listAirports.Add(new Airport("южный", 10, 5000, 4000, 1));
-            listAirports.Add(new Airport("восточный", 10, 6000, 5000, 1));
-            listAirports.Add(new Airport("западный", 10, 4000, 5000, 1));
-            listAirports.Add(new Airport("Сев-Зап", 5, 4500, 5500, 1));
-            listAirports.Add(new Airport("Сев-Вос", 5, 5500, 5500, 0));
-            listAirports.Add(new Airport("Юг-Зап", 5, 4500, 4500, 0));
-            listAirports.Add(new Airport("Юг-Вос", 5, 5500, 4500, 1));
+            // Airport(string name , int maxDocks, int x, int y, int type, , List<Flight> listFlights, List<Airport> listAirports)
+            listAirports.Add(new Airport("Центральный", 10, 5000, 5000, 1, listFlights, listAirports));
+            listAirports.Add(new Airport("Северный", 10, 5000, 6000, 1, listFlights, listAirports));
+            listAirports.Add(new Airport("южный", 10, 5000, 4000, 1, listFlights, listAirports));
+            listAirports.Add(new Airport("восточный", 10, 6000, 5000, 1, listFlights, listAirports));
+            listAirports.Add(new Airport("западный", 10, 4000, 5000, 1, listFlights, listAirports));
+            listAirports.Add(new Airport("Сев-Зап", 5, 4500, 5500, 1, listFlights, listAirports));
+            listAirports.Add(new Airport("Сев-Вос", 5, 5500, 5500, 0, listFlights, listAirports));
+            listAirports.Add(new Airport("Юг-Зап", 5, 4500, 4500, 0, listFlights, listAirports));
+            listAirports.Add(new Airport("Юг-Вос", 5, 5500, 4500, 1, listFlights, listAirports));
 
         }
 
@@ -103,7 +106,6 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
         public void viewListPAirs(int id)  // отображение списка самолетов в аэропарту
         {
             Airport port = listAirports[id];
-            Console.WriteLine(port.Name);
             listViewPortAirs.Items.Clear(); // Очистить список самолетов
             for (int i = 0; i < port.MaxDocks; i++)
             {
@@ -118,35 +120,53 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
                 }
                 listViewPortAirs.Items.Add(newAir);
             }
+            labelPortName.Text = port.Name;
+            labelPortInfo.Text = " Отправленно: " + port.SendPassengers + " пасс. " + port.SendCargo + " кг груза | Принято: "
+                + port.GetPassengers + " пасс. " + port.GetCargo + " кг груза";
+        }
+
+        public void viewListFlights()   //  отображение списка рейсов
+        {
+            listViewFlights.Items.Clear(); // Очистить список рейсов
+            for (int i =0; i < listFlights.Count; i++ )
+            {
+                ListViewItem newFlight = new ListViewItem(Convert.ToString(i));
+                newFlight.SubItems.Add(listFlights[i].Board.Name);
+                newFlight.SubItems.Add(Convert.ToString(listFlights[i].X));
+                newFlight.SubItems.Add(Convert.ToString(listFlights[i].Y));
+                newFlight.SubItems.Add(Convert.ToString(listFlights[i].FlightTime));
+                newFlight.SubItems.Add(Convert.ToString(listFlights[i].Target.Name));
+                listViewFlights.Items.Add(newFlight);
+            }
         }
         public void initListAirModelDefault() // инициализация моделей по молчанию
         {
 
-            //( name,  model,  weight, flightTime, serviceTime,  speed, maxFuel,  fuelConsumption,  fuel)
+            //( name,  model,  weight, flightTime, serviceTime,  speed )
             // прогулочные модели
-            listAirModelWal.Add( new WalkingAircraft("", "М-12 «Касатик»", 485, 8, 1, 190, 180, 22, 0));
-            listAirModelWal.Add(new WalkingAircraft("", "Су-26", 680, 4, 1, 310, 200, 40, 0));
-            listAirModelWal.Add(new WalkingAircraft("", "Як-52", 1035, 3, 1, 270, 200, 55, 0));
+            listAirModelWal.Add(new WalkingAircraft("", "М-12 «Касатик»", 485, 8, 1, 190));
+            listAirModelWal.Add(new WalkingAircraft("", "Су-26", 680, 4, 1, 310));
+            listAirModelWal.Add(new WalkingAircraft("", "Як-52", 1035, 3, 1, 270));
 
             // пассажирские
 
-            listAirModelPas.Add(new PassengerAircraft("", "Аккорд-201", 1330, 10, 2, 200, 280, 20, 0, 6));
-            listAirModelPas.Add(new PassengerAircraft("", "Л-42",       800,  10, 1, 210, 290, 22, 0, 4));
-            listAirModelPas.Add(new PassengerAircraft("", "Ан-140",   12810,  5,  5, 550, 4500, 800, 0, 52));
-            listAirModelPas.Add(new PassengerAircraft("", "Л-42",       800,  13, 3, 300, 290, 22, 0, 8));
-            listAirModelPas.Add(new PassengerAircraft("", "Ту-334", 18700, 4, 10, 820, 10100, 2300, 0, 102));
-            listAirModelPas.Add(new PassengerAircraft("", "Boeing 777", 263080, 13, 10, 805, 117000, 7800, 0, 350));
-            listAirModelPas.Add(new PassengerAircraft("", "SSJ 100", 24250, 6, 8, 830, 15805, 2000, 0, 120));
+            listAirModelPas.Add(new PassengerAircraft("", "Аккорд-201", 1330, 10, 2, 200, 6));
+            listAirModelPas.Add(new PassengerAircraft("", "Л-42",       800,  10, 1, 210, 4));
+            listAirModelPas.Add(new PassengerAircraft("", "Ан-140",   12810,  5,  5, 550, 52));
+            listAirModelPas.Add(new PassengerAircraft("", "Л-42",       800,  13, 3, 300, 8));
+            listAirModelPas.Add(new PassengerAircraft("", "Ту-334", 18700, 4, 10, 820,  102));
+            listAirModelPas.Add(new PassengerAircraft("", "Boeing 777", 263080, 13, 10, 805,350));
+            listAirModelPas.Add(new PassengerAircraft("", "SSJ 100", 24250, 6, 8, 830,  120));
 
             // военные
-            listAirModelWar.Add(new WarAircraft("", "МиГ-29", 11000, 3, 10, 850, 3000, 800, 0));
-            listAirModelWar.Add(new WarAircraft("", "МиГ-35", 13500, 3, 10, 1000, 3000, 800, 0));
-            listAirModelWar.Add(new WarAircraft("", "Су-57", 18500, 3, 10, 2000, 11100, 3500, 0));
+            listAirModelWar.Add(new WarAircraft("", "МиГ-29", 11000, 3, 10, 850 ));
+            listAirModelWar.Add(new WarAircraft("", "МиГ-35", 13500, 3, 10, 1000 ));
+            listAirModelWar.Add(new WarAircraft("", "Су-57", 18500, 3, 10, 2000 ));
 
             // грузовые 
-            listAirModelCar.Add(new CargoAircraft("", "Ан-124 «Руслан»", 178400, 10, 9, 800, 212350, 16000, 0, 100000));
-            listAirModelCar.Add(new CargoAircraft("", "Ту-330", 25000, 9, 3, 800, 35000, 3500, 0, 35000));
-            listAirModelCar.Add(new CargoAircraft("", "Basler BT-67", 7144, 5, 2, 380, 2350, 335, 0, 3550));
+            listAirModelCar.Add(new CargoAircraft("", "Ан-124 «Руслан»", 178400, 10, 9, 800,  100000));
+            listAirModelCar.Add(new CargoAircraft("", "Ту-330", 25000, 9, 3, 800,  35000));
+            listAirModelCar.Add(new CargoAircraft("", "Basler BT-67", 7144, 5, 2, 380,  3550));
         }
 
         private void ListViewPorts_Click(object sender, EventArgs e)
@@ -154,6 +174,15 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
             //listStoreView.FocusedItem.Text
             viewListPAirs(listViewPorts.FocusedItem.Index);
 
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            listAirports[listViewPorts.FocusedItem.Index].startFlight();
+            viewListFlights();
+          
+            viewListPAirs(listViewPorts.FocusedItem.Index);
+            viewListAirports();
         }
     }
 }

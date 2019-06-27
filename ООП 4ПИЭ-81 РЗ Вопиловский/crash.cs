@@ -7,21 +7,21 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
 {
     public class Crash  // Крушение
     {
-        private int step;  // на каком шаге крушение
+        private int sTime;  // на каком шаге крушение
         private Aircraft board; // самолет
         private Airport start;  // откуда вылетел
         private Airport target; // куда летел 
         private int x;      // место крушения
         private int y;      // 
 
-        public Crash(Flight flight, int step)
+        public Crash(Flight flight, int sTime)
         {
-            this.step = step;
+            this.sTime = sTime;
             this.board = flight.Board;
-            this.start = flight.;
-            this.target;
-            this.x;
-            this.y;
+            this.start = flight.Start;
+            this.target = flight.Target;
+            this.x = flight.X;
+            this.y = flight.Y;
     }
     }
 }

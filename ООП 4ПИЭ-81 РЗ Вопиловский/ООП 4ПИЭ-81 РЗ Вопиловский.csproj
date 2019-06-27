@@ -116,7 +116,7 @@
   <ItemGroup>
     <Compile Include="Aircraft.cs" />
     <Compile Include="Airport.cs" />
-    <Compile Include="crash.cs" />
+    <Compile Include="Crash.cs" />
     <Compile Include="Flight.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

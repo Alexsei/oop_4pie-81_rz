@@ -3,14 +3,14 @@
   <Class Name="ООП_4ПИЭ_81_РЗ_Вопиловский.Airport">
     <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACQAAAAAQAAAACAAAAAQAIAAFAAAAAwBgAAIAYAA=</HashCode>
+      <HashCode>QABECQAAAAAQABAASAQAAAQAAQAFAAAAAwBgAAIAYAE=</HashCode>
       <FileName>Airport.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ООП_4ПИЭ_81_РЗ_Вопиловский.Aircraft">
     <Position X="4.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAAgAAAAMAAAAAACAAAwBAAAHAQAgAwgAAAIIAAA=</HashCode>
+      <HashCode>AQAEAAgAAAQEAAAEAAAAAAwBACCEAQAhAQgAAAIIAAA=</HashCode>
       <FileName>Aircraft.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -31,21 +31,21 @@
   <Class Name="ООП_4ПИЭ_81_РЗ_Вопиловский.CargoAircraft">
     <Position X="6.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAEABAAAAAAAAAQAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAECBAAABAAAAAQAAAAA=</HashCode>
       <FileName>Aircraft.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ООП_4ПИЭ_81_РЗ_Вопиловский.PassengerAircraft">
-    <Position X="3" Y="6.25" Width="1.5" />
+    <Position X="4" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACIAAAAAAAAAAAAAAAAAAAAABAAAAAAAgAAAAAAA=</HashCode>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAACBAAABAAAgAAAAIAA=</HashCode>
       <FileName>Aircraft.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ООП_4ПИЭ_81_РЗ_Вопиловский.Flight">
     <Position X="8.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAgAACAAAAAgIAAAAAAAAAAgAAAAIABgACAAAAA=</HashCode>
+      <HashCode>AAAAAAgAACAAAAAgIAAAACgAAAAgAAAAIABgACAAYAA=</HashCode>
       <FileName>Flight.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -59,7 +59,7 @@
   <Class Name="ООП_4ПИЭ_81_РЗ_Вопиловский.StepTime">
     <Position X="10.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AABAAAAAAAACAAAAAgQAAAAAAAAgAAAAAAAAAAABAAA=</HashCode>
       <FileName>StepTime.cs</FileName>
     </TypeIdentifier>
   </Class>

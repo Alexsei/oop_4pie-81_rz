@@ -46,13 +46,17 @@
             this.PortAMax = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PortAStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listViewFlights = new System.Windows.Forms.ListView();
             this.FlN = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FlAir = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FlX = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FlY = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FlTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FlTarget = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button1 = new System.Windows.Forms.Button();
+            this.labelPortInfo = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelPortName = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -124,7 +128,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.listViewPortAirs);
-            this.groupBox2.Location = new System.Drawing.Point(13, 250);
+            this.groupBox2.Location = new System.Drawing.Point(14, 294);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(421, 229);
             this.groupBox2.TabIndex = 1;
@@ -140,7 +144,7 @@
             this.PortAType,
             this.PortAMax,
             this.PortAStatus});
-            this.listViewPortAirs.Location = new System.Drawing.Point(7, 11);
+            this.listViewPortAirs.Location = new System.Drawing.Point(6, 15);
             this.listViewPortAirs.Name = "listViewPortAirs";
             this.listViewPortAirs.Size = new System.Drawing.Size(403, 208);
             this.listViewPortAirs.TabIndex = 0;
@@ -178,7 +182,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.listView1);
+            this.groupBox3.Controls.Add(this.listViewFlights);
             this.groupBox3.Location = new System.Drawing.Point(441, 13);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(441, 377);
@@ -186,21 +190,21 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Текушие рейсы самолетов";
             // 
-            // listView1
+            // listViewFlights
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewFlights.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.FlN,
             this.FlAir,
             this.FlX,
             this.FlY,
             this.FlTime,
             this.FlTarget});
-            this.listView1.Location = new System.Drawing.Point(7, 20);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(420, 345);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listViewFlights.Location = new System.Drawing.Point(7, 20);
+            this.listViewFlights.Name = "listViewFlights";
+            this.listViewFlights.Size = new System.Drawing.Size(420, 345);
+            this.listViewFlights.TabIndex = 0;
+            this.listViewFlights.UseCompatibleStateImageBehavior = false;
+            this.listViewFlights.View = System.Windows.Forms.View.Details;
             // 
             // FlN
             // 
@@ -231,11 +235,52 @@
             // 
             this.FlTarget.Text = "Цель";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(492, 455);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
+            // labelPortInfo
+            // 
+            this.labelPortInfo.AutoSize = true;
+            this.labelPortInfo.Location = new System.Drawing.Point(19, 269);
+            this.labelPortInfo.Name = "labelPortInfo";
+            this.labelPortInfo.Size = new System.Drawing.Size(16, 13);
+            this.labelPortInfo.TabIndex = 5;
+            this.labelPortInfo.Text = "---";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 251);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Аэропорт:";
+            // 
+            // labelPortName
+            // 
+            this.labelPortName.AutoSize = true;
+            this.labelPortName.Location = new System.Drawing.Point(78, 250);
+            this.labelPortName.Name = "labelPortName";
+            this.labelPortName.Size = new System.Drawing.Size(16, 13);
+            this.labelPortName.TabIndex = 6;
+            this.labelPortName.Text = "---";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(903, 614);
+            this.Controls.Add(this.labelPortName);
+            this.Controls.Add(this.labelPortInfo);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -245,6 +290,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -268,13 +314,17 @@
         private System.Windows.Forms.ColumnHeader PortAMax;
         private System.Windows.Forms.ColumnHeader PortAStatus;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listViewFlights;
         private System.Windows.Forms.ColumnHeader FlN;
         private System.Windows.Forms.ColumnHeader FlAir;
         private System.Windows.Forms.ColumnHeader FlX;
         private System.Windows.Forms.ColumnHeader FlY;
         private System.Windows.Forms.ColumnHeader FlTime;
         private System.Windows.Forms.ColumnHeader FlTarget;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labelPortInfo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelPortName;
     }
 }
 

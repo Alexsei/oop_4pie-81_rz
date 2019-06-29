@@ -3,42 +3,42 @@
   <Class Name="ООП_4ПИЭ_81_РЗ_Вопиловский.Airport">
     <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QABECQAAAAAQABAASAQAAAQAAQAFAAAAAwBgAAIAYAE=</HashCode>
+      <HashCode>QABECUAAAAAQABAASAQRAAQAAQAFAAAAAwBgAAIAYAE=</HashCode>
       <FileName>Airport.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ООП_4ПИЭ_81_РЗ_Вопиловский.Aircraft">
     <Position X="4.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAEAAgAAAQEAAAEAAAAAAwBACCEAQAhAQgAAAIIAAA=</HashCode>
+      <HashCode>AQAEAAgAAAQEAAAEAAAAAIwBACAEAQAhAQgAAAIIIAA=</HashCode>
       <FileName>Aircraft.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ООП_4ПИЭ_81_РЗ_Вопиловский.WarAircraft">
     <Position X="7" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Aircraft.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ООП_4ПИЭ_81_РЗ_Вопиловский.WalkingAircraft">
     <Position X="6.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Aircraft.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ООП_4ПИЭ_81_РЗ_Вопиловский.CargoAircraft">
     <Position X="6.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAECBAAABAAAAAQAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAEAAAAABAAAAAQAAAAA=</HashCode>
       <FileName>Aircraft.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ООП_4ПИЭ_81_РЗ_Вопиловский.PassengerAircraft">
-    <Position X="4" Y="7.5" Width="1.5" />
+    <Position X="4.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAACBAAABAAAgAAAAIAA=</HashCode>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAIAAAAAAAAABAAAgAAAAIAA=</HashCode>
       <FileName>Aircraft.cs</FileName>
     </TypeIdentifier>
   </Class>

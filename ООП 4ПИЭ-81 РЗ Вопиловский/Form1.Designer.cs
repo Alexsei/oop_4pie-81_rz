@@ -53,13 +53,29 @@
             this.FlY = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FlTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FlTarget = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.FLCargo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
             this.labelPortInfo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.labelPortName = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.comboBoxPort = new System.Windows.Forms.ComboBox();
+            this.FlRange = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.FLLeft = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.listViewCrash = new System.Windows.Forms.ListView();
+            this.CrN = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CrBort = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CrX = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CrY = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CrTarget = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CrTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CrCargo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -185,7 +201,7 @@
             this.groupBox3.Controls.Add(this.listViewFlights);
             this.groupBox3.Location = new System.Drawing.Point(441, 13);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(441, 377);
+            this.groupBox3.Size = new System.Drawing.Size(530, 377);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Текушие рейсы самолетов";
@@ -197,11 +213,14 @@
             this.FlAir,
             this.FlX,
             this.FlY,
+            this.FlRange,
+            this.FLLeft,
             this.FlTime,
-            this.FlTarget});
+            this.FlTarget,
+            this.FLCargo});
             this.listViewFlights.Location = new System.Drawing.Point(7, 20);
             this.listViewFlights.Name = "listViewFlights";
-            this.listViewFlights.Size = new System.Drawing.Size(420, 345);
+            this.listViewFlights.Size = new System.Drawing.Size(507, 345);
             this.listViewFlights.TabIndex = 0;
             this.listViewFlights.UseCompatibleStateImageBehavior = false;
             this.listViewFlights.View = System.Windows.Forms.View.Details;
@@ -214,7 +233,7 @@
             // FlAir
             // 
             this.FlAir.Text = "Борт";
-            this.FlAir.Width = 93;
+            this.FlAir.Width = 72;
             // 
             // FlX
             // 
@@ -233,11 +252,17 @@
             // 
             // FlTarget
             // 
-            this.FlTarget.Text = "Цель";
+            this.FlTarget.Text = "Маршрут";
+            this.FlTarget.Width = 77;
+            // 
+            // FLCargo
+            // 
+            this.FLCargo.Text = "Везет";
+            this.FLCargo.Width = 55;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(492, 455);
+            this.button1.Location = new System.Drawing.Point(22, 529);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
@@ -272,11 +297,110 @@
             this.labelPortName.TabIndex = 6;
             this.labelPortName.Text = "---";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(103, 529);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(184, 529);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
+            // 
+            // comboBoxPort
+            // 
+            this.comboBoxPort.FormattingEnabled = true;
+            this.comboBoxPort.Location = new System.Drawing.Point(101, 251);
+            this.comboBoxPort.Name = "comboBoxPort";
+            this.comboBoxPort.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxPort.TabIndex = 9;
+            // 
+            // FlRange
+            // 
+            this.FlRange.Text = "Дал.км";
+            // 
+            // FLLeft
+            // 
+            this.FLLeft.Text = "остал. км";
+            this.FLLeft.Width = 68;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.listViewCrash);
+            this.groupBox4.Location = new System.Drawing.Point(442, 397);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(529, 196);
+            this.groupBox4.TabIndex = 10;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Катастрофы";
+            // 
+            // listViewCrash
+            // 
+            this.listViewCrash.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.CrN,
+            this.CrBort,
+            this.CrX,
+            this.CrY,
+            this.CrTarget,
+            this.CrTime,
+            this.CrCargo});
+            this.listViewCrash.Location = new System.Drawing.Point(7, 20);
+            this.listViewCrash.Name = "listViewCrash";
+            this.listViewCrash.Size = new System.Drawing.Size(506, 170);
+            this.listViewCrash.TabIndex = 0;
+            this.listViewCrash.UseCompatibleStateImageBehavior = false;
+            this.listViewCrash.View = System.Windows.Forms.View.Details;
+            // 
+            // CrN
+            // 
+            this.CrN.Text = "№";
+            this.CrN.Width = 29;
+            // 
+            // CrBort
+            // 
+            this.CrBort.Text = "Борт";
+            // 
+            // CrX
+            // 
+            this.CrX.Text = "X";
+            this.CrX.Width = 40;
+            // 
+            // CrY
+            // 
+            this.CrY.Text = "Y";
+            this.CrY.Width = 40;
+            // 
+            // CrTarget
+            // 
+            this.CrTarget.Text = "Маршрут";
+            // 
+            // CrTime
+            // 
+            this.CrTime.Text = "Время";
+            // 
+            // CrCargo
+            // 
+            this.CrCargo.Text = "Потери";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(903, 614);
+            this.ClientSize = new System.Drawing.Size(1080, 614);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.comboBoxPort);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.labelPortName);
             this.Controls.Add(this.labelPortInfo);
             this.Controls.Add(this.label1);
@@ -289,6 +413,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -325,6 +450,21 @@
         private System.Windows.Forms.Label labelPortInfo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelPortName;
+        private System.Windows.Forms.ColumnHeader FLCargo;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox comboBoxPort;
+        private System.Windows.Forms.ColumnHeader FlRange;
+        private System.Windows.Forms.ColumnHeader FLLeft;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.ListView listViewCrash;
+        private System.Windows.Forms.ColumnHeader CrN;
+        private System.Windows.Forms.ColumnHeader CrBort;
+        private System.Windows.Forms.ColumnHeader CrX;
+        private System.Windows.Forms.ColumnHeader CrY;
+        private System.Windows.Forms.ColumnHeader CrTarget;
+        private System.Windows.Forms.ColumnHeader CrTime;
+        private System.Windows.Forms.ColumnHeader CrCargo;
     }
 }
 

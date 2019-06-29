@@ -22,7 +22,7 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
             this.board = board;
             this.x = start.X;
             this.y = start.Y;
-            this.flightTime = board.FlightTime;
+            this.flightTime = Convert.ToDouble(board.FlightTime);
         }
 
         public Aircraft Board { get { return this.board; } }
@@ -33,14 +33,30 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
 
         public double FlightTime { get { return this.flightTime; } }
 
+        public int leftToFly   // осталось лететь
+        { get            {
+                return Convert.ToInt32(Math.Sqrt((target.X - this.x) * (target.X - this.x) + (target.Y - this.y) * (target.Y - this.y)));
+            }
+            
+        }
+ 
+
+
+        public int range   // дальность маршрута
+        { get            {
+                return Convert.ToInt32(Math.Sqrt((target.X - start.X) * (target.X - start.X) + (target.Y - start.Y) * (target.Y - start.Y)));
+            }
+            
+        }
         public bool step()
         {
             int targetX = target.X;
             int targetY = target.Y;
             double range = Math.Sqrt((targetX - x) * (targetX - x) + (targetY - y) * (targetY - y)); // расcтояние до цели
-            this.flightTime = this.flightTime - (Convert.ToDouble(this.board.Weight + this.board.Cargo) / this.board.Weight);
-            Console.WriteLine(this.flightTime);
-
+            double Weight = this.board.Weight;
+            double Cargo = this.board.Cargo;
+            this.flightTime = this.flightTime - ((Weight+ Cargo) / Weight);
+    //        Console.WriteLine(this.flightTime);
             if (range <= board.Speed) 
             {
                 this.x = targetX;

@@ -22,6 +22,13 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
             this.target = flight.Target;
             this.x = flight.X;
             this.y = flight.Y;
-    }
+        }
+        public Aircraft Board { get { return this.board; } }
+        public Airport Start { get { return this.start; } }
+        public Airport Target { get { return this.target; } }
+        public int X { get { return this.x; } }
+        public int Y { get { return this.y; } }
+        public int STime { get { return this.sTime; } }
+
     }
 }

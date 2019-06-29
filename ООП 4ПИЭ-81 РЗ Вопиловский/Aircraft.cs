@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ООП_4ПИЭ_81_РЗ_Вопиловский
 {
-    public class Aircraft
+    public  class Aircraft
     {
         protected string name;            // Наименование 
         protected string model;           // модель
@@ -13,13 +13,10 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
         protected int flightTime;         // максимальное время полета: тик времени
         protected int serviceTime;        // время обслуживание в аэропарту:  тик времени
         protected int speed;              // рассотояние за один тик времени
-                                          //   protected int maxFuel;            // максимум топлива
-                                          //   protected int fuelConsumption; // потребление топлива за 1 тик на кг веса
-                                          //    protected int fuel;            // количество топлива на самолете: кг
-        protected int priority = 0;
-        private Random rnd = new Random();
+        protected int priority;
+        protected Random rnd = new Random();
 
-        public Aircraft(string name, string model, int weight, int flightTime, int serviceTime, int speed)
+        public Aircraft(string name, string model, int weight, int flightTime, int serviceTime, int speed, int priority)
         {   // инициализация
             this.name = name;
             this.model = model;
@@ -27,6 +24,7 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
             this.flightTime = flightTime;
             this.serviceTime = serviceTime;
             this.speed = speed;
+            this.priority = priority;
             //      this.maxFuel = maxFuel;
             //      this.fuelConsumption = fuelConsumption;
             //      this.fuel = fuel;
@@ -34,16 +32,15 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
         public Aircraft(Aircraft air, string name)
         {
             air.getAll(out string n, out string model, out int weight, out int flightTime, out int serviceTime,
-                out int speed);
+                out int speed, out int priority);
             this.name = name;
             this.model = model;
             this.weight = weight;
             this.flightTime = flightTime;
             this.serviceTime = serviceTime;
             this.speed = speed;
-            //          this.maxFuel = maxFuel;
-            //         this.fuelConsumption = fuelConsumption;
-            //          this.fuel = fuel;
+            this.priority = priority;
+
         }
 
 
@@ -93,12 +90,12 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
 
         }
 
-        public int Weight { get { return this.priority; } }  // вес самолета
+        public int Weight { get { return this.weight; } }  // вес самолета
 
-        public int Cargo { get { return 0; } }  // возврашает вес нагрузки;
+        public virtual int Cargo { get { return 0; } set {  } }  // возврашает вес нагрузки;
 
         public void getAll(out string name, out string model, out int weight, out int flightTime, out int serviceTime,
-            out int speed)
+            out int speed, out int priority)
         {
             name = this.name;
             model = this.model;
@@ -106,99 +103,93 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
             flightTime = this.flightTime;
             serviceTime = this.serviceTime;
             speed = this.speed;
+            priority = this.priority;
             //         maxFuel = this.maxFuel;
             //         fuelConsumption = this.fuelConsumption;
             //         fuel = this.fuel;
         }
-        public void loading() { } //предстартовая загрузка
+        public virtual void Loading() {  } //предстартовая загрузка
 
-        public int Passenger { get { return 0; } }// количество пассажирова
+        public virtual int Passenger { get { return 0; } set { } }// количество пассажирова
+        public virtual int MaxPassenger { get { return 0; } }
+        public virtual int MaxCargo { get { return 0; } }
 
     }
 
     public class WarAircraft : Aircraft
     {
-        private const string type = "wat"; // тип военный
         public WarAircraft(Aircraft air, string name) : base(air, name)
-        {
-            this.priority = 0;
-        }
+        {       }
         public WarAircraft(string name, string model, int weight, int flightTime, int serviceTime,
-                int speed) : base(name, model, weight, flightTime, serviceTime,
-                speed)
-        { this.priority = 0; }
+                int speed) : base(name, model, weight, flightTime, serviceTime, speed, 0)
+        {  }
+        public override void Loading() {  } 
 
     }
 
     public class WalkingAircraft : Aircraft
     {
-        private const string type = "walking"; // тип прогулочный
-
-
         public WalkingAircraft(Aircraft air, string name) : base(air, name)
-        {
-            this.priority = 1;
-        }
+        {        }
 
         public WalkingAircraft(string name, string model, int weight, int flightTime, int serviceTime,
-            int speed) : base(name, model, weight, flightTime, serviceTime,
-            speed) { this.priority = 1; }
+            int speed) : base(name, model, weight, flightTime, serviceTime, speed, 1) {  }
+        public override void Loading() { }
     }
 
     public class CargoAircraft : Aircraft
     {
-        private const string type = "cargo"; // тип грузовой
         private int cargo = 0;
         private int maxCargo;
 
-        public CargoAircraft(Aircraft air, string name, int maxCargo) : base(air, name)
+        public CargoAircraft(CargoAircraft air, string name) : base(air, name)
         {
-            this.maxCargo = maxCargo;
-            this.priority = 2;
+            this.maxCargo = air.maxCargo;
+
         }
 
         public CargoAircraft(string name, string model, int weight, int flightTime, int serviceTime,
-        int speed, int maxCargo) : base(name, model, weight, flightTime, serviceTime,
-        speed)
+        int speed, int maxCargo) : base(name, model, weight, flightTime, serviceTime, speed, 2)
         {
             this.maxCargo = maxCargo;
-            this.priority = 2;
         }
-        public new int Cargo { get { return this.cargo; } set { this.cargo = value; } } // возврашает вес нагрузки;
-        public new void loading()//предстартовая загрузка
+        public override int Cargo { get { return this.cargo; } set { this.cargo = value; } } // возврашает вес нагрузки;
+
+        public override int MaxCargo { get { return this.maxCargo; } } // возврашает вес нагрузки;
+       
+        public override void Loading()          //предстартовая загрузка
         {
-            Random rnd = new Random();
-            this.cargo = rnd.Next(maxCargo);
+            this.cargo = this.rnd.Next(this.maxCargo); ;
+            Console.WriteLine("Загрузка самолета: " + this.cargo + "кг / " + this.maxCargo + "кг");
         }
     }
 
     public class PassengerAircraft : Aircraft
     {
-        private const string type = "passenger"; // тип пассажирский
         private int passenger = 0;
         private int maxPassenger;
 
 
-        public PassengerAircraft(Aircraft air, string name, int maxPassenger) : base(air, name)
+        public PassengerAircraft(PassengerAircraft air, string name ) : base(air, name)
         {
-            this.maxPassenger = maxPassenger;
-            this.priority = 3;
+            this.maxPassenger = air.maxPassenger;
         }
 
         public PassengerAircraft(string name, string model, int weight, int flightTime, int serviceTime,
             int speed, int maxPassenger) : base(name, model, weight, flightTime, serviceTime,
-            speed)
+            speed, 3)
         {
             this.maxPassenger = maxPassenger;
-            this.priority = 3;
         }
-        public new int Cargo { get { return this.passenger * 100; } }  // возврашает вес нагрузки;
-        public new int Passenger { get { return this.passenger; } set { this.passenger = value; } }
+        public override int Cargo { get { return this.passenger * 100; } }  // возврашает вес нагрузки;
+        public override int Passenger { get { return this.passenger; } set { this.passenger = value; } }
 
-        public new void loading()//предстартовая загрузка
+        public override int MaxPassenger { get { return this.maxPassenger; } }
+
+        public override void Loading()  //предстартовая загрузка
         {
-            Random rnd = new Random();
-            this.passenger = rnd.Next(passenger);
+            this.passenger = rnd.Next(maxPassenger);
+            Console.WriteLine("Пассажиров принято на борт: " + this.passenger + " / "+ this.maxPassenger);
         }
 
     }

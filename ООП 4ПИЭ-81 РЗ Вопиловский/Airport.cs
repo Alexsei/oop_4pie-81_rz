@@ -105,10 +105,9 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
                     if (airDocks[i]== null) { airDocks[i] = new Docks(); };
                     if (airDocks[i].Status == 0)  // если док свободен
                     {
-                        airDocks[i].Status = 2;
+                        airDocks[i].Status = 1;
                         airDocks[i].ServiceTime = air.ServTime;
                         airDocks[i].Air = air;
-                        this.busyDocks++;
                         return true;
                     }
                 }
@@ -121,15 +120,28 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
             List<int> IdAirDock = new List<int>(); // Ид доков
             for (int i = 0; i < airDocks.Length; i++)
             {
-                if (airDocks[i].Status == 2)
+                switch (airDocks[i].Status)
                 {
-                    IdAirDock.Add(i);
+                    case 2:     // если самолет готов
+                        IdAirDock.Add(i);
+                        break;
+                    case 1:     // если самолет на сервисе 
+                        airDocks[i].ServiceTime--;
+                        if (airDocks[i].ServiceTime <= 0)// если время сервиса закончилось, 
+                        {
+                            airDocks[i].Status = 2;     //статус готов
+                        } 
+                        break;
                 }
+
             }
-            if (IdAirDock.Count>0)
+            if ((IdAirDock.Count > 0)&& //если есть самолеты в доке
+                    (rnd.Next(25) > listFlights.Count) ) //  чем больше текуших рейсов тем меньше новых вылето
             {
                 int IdAir = IdAirDock[rnd.Next(IdAirDock.Count)];  // выбор случайного Ид дока
-                airDocks[IdAir].Air.loading();
+
+                airDocks[IdAir].Air.Loading();
+                Console.WriteLine(airDocks[IdAir].Air.Cargo);
 
                 this.sendPassengers = this.sendPassengers + airDocks[IdAir].Air.Passenger;
                 this.sendCargo = this.sendCargo + airDocks[IdAir].Air.Cargo;
@@ -163,7 +175,7 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
                 }
                 this.getPassengers = this.getPassengers + listFlights[id].Board.Passenger;
                 this.getCargo = this.getCargo + listFlights[id].Board.Cargo;
-
+                
                 this.addAirInDock(listFlights[id].Board);  // поместить самолет в док
                 listFlights.RemoveAt(id);  // рейс
                 return true; // результат посадки +

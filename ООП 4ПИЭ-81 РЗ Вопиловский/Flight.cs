@@ -52,11 +52,7 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
         {
             int targetX = target.X;
             int targetY = target.Y;
-            double range = Math.Sqrt((targetX - x) * (targetX - x) + (targetY - y) * (targetY - y)); // расcтояние до цели
-            double Weight = this.board.Weight;
-            double Cargo = this.board.Cargo;
-            this.flightTime = this.flightTime - ((Weight+ Cargo) / Weight);
-    //        Console.WriteLine(this.flightTime);
+            double range = this.leftToFly;
             if (range <= board.Speed) 
             {
                 this.x = targetX;
@@ -69,7 +65,10 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
             }
             if (this.flightTime > 0 ) // если есть время
             {
-                this.flightTime = this.flightTime - (Convert.ToDouble(this.board.Weight + this.board.Cargo) / this.board.Weight);
+                double Weight = this.board.Weight;
+                double Cargo = this.board.Cargo;
+                this.flightTime = this.flightTime - ((Weight + Cargo) / Weight);
+                if (this.flightTime < 0) { this.flightTime = 0; }
                 return true;        // вернуть полет нормально
             } else
             {

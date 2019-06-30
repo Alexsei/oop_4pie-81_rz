@@ -57,7 +57,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.labelPortInfo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.labelPortName = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.comboBoxPort = new System.Windows.Forms.ComboBox();
@@ -273,7 +272,7 @@
             // labelPortInfo
             // 
             this.labelPortInfo.AutoSize = true;
-            this.labelPortInfo.Location = new System.Drawing.Point(19, 269);
+            this.labelPortInfo.Location = new System.Drawing.Point(13, 278);
             this.labelPortInfo.Name = "labelPortInfo";
             this.labelPortInfo.Size = new System.Drawing.Size(16, 13);
             this.labelPortInfo.TabIndex = 5;
@@ -287,15 +286,6 @@
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Аэропорт:";
-            // 
-            // labelPortName
-            // 
-            this.labelPortName.AutoSize = true;
-            this.labelPortName.Location = new System.Drawing.Point(78, 250);
-            this.labelPortName.Name = "labelPortName";
-            this.labelPortName.Size = new System.Drawing.Size(16, 13);
-            this.labelPortName.TabIndex = 6;
-            this.labelPortName.Text = "---";
             // 
             // button2
             // 
@@ -320,10 +310,11 @@
             // comboBoxPort
             // 
             this.comboBoxPort.FormattingEnabled = true;
-            this.comboBoxPort.Location = new System.Drawing.Point(101, 251);
+            this.comboBoxPort.Location = new System.Drawing.Point(101, 247);
             this.comboBoxPort.Name = "comboBoxPort";
             this.comboBoxPort.Size = new System.Drawing.Size(121, 21);
             this.comboBoxPort.TabIndex = 9;
+            this.comboBoxPort.SelectedIndexChanged += new System.EventHandler(this.ComboBoxPort_SelectedIndexChanged);
             // 
             // FlRange
             // 
@@ -401,7 +392,6 @@
             this.Controls.Add(this.comboBoxPort);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.labelPortName);
             this.Controls.Add(this.labelPortInfo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
@@ -449,7 +439,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label labelPortInfo;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label labelPortName;
         private System.Windows.Forms.ColumnHeader FLCargo;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;

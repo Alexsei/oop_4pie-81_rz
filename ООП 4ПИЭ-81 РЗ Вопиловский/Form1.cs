@@ -167,8 +167,8 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
                 }
                 listViewPortAirs.Items.Add(newAir);
             }
-            labelPortName.Text = port.Name;
-            labelPortInfo.Text = " Отправленно: " + port.SendPassengers + " пасс. " + port.SendCargo + " кг груза | Принято: "
+            
+            labelPortInfo.Text = "Отправленно: " + port.SendPassengers + " пасс. " + port.SendCargo + " кг груза | Принято: "
                 + port.GetPassengers + " пасс. " + port.GetCargo + " кг груза";
         }
 
@@ -297,6 +297,11 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
         private void Button3_Click(object sender, EventArgs e)
         {
             upViewList();
+        }
+
+        private void ComboBoxPort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            viewListPAirs(comboBoxPort.SelectedIndex);
         }
     }
 }

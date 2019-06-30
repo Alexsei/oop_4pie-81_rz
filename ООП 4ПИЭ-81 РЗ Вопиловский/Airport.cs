@@ -141,12 +141,19 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
                 int IdAir = IdAirDock[rnd.Next(IdAirDock.Count)];  // выбор случайного Ид дока
 
                 airDocks[IdAir].Air.Loading();
-                Console.WriteLine(airDocks[IdAir].Air.Cargo);
+              //  Console.WriteLine(airDocks[IdAir].Air.Cargo);
 
                 this.sendPassengers = this.sendPassengers + airDocks[IdAir].Air.Passenger;
                 this.sendCargo = this.sendCargo + airDocks[IdAir].Air.Cargo;
-
-                listFlights.Add(new Flight(listAirports[rnd.Next(listAirports.Count)], this, airDocks[IdAir].Air)); // запуск рейса
+                List<int> id = new List<int>();
+                for (int i = 0; i < listAirports.Count; i++)
+                {
+                    if (listAirports[i].name == this.name) continue; // если это текуший аэропорт пропустить
+                    if ((airDocks[IdAir].Air.Priority != 0)&&(listAirports[i].Type == 0) ) continue; // для не военных самолетов пропустить военный аэропорт
+                    id.Add(i);  // добавить ид аэропорта в массив
+                }
+                listFlights.Add(new Flight(listAirports[id[rnd.Next(id.Count)]],      // id[rnd.Next(id.Count)] выбор случайного аэропорта
+                    this, airDocks[IdAir].Air)); // запуск рейса 
                 airDocks[IdAir].Status = 0;
                 airDocks[IdAir].Air = null;
             }
@@ -157,9 +164,9 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
             List<int> IdFlights = new List<int>();
             for (int i = 0; i < listFlights.Count; i++) //  поиск самолетов на посадку
             {
-                if ((listFlights[i].X==this.x)&&(listFlights[i].Y == this.y))
+                if ((listFlights[i].X==this.x)&&(listFlights[i].Y == this.y))  // если самолет у аэропорта
                 {
-                    IdFlights.Add(i);
+                    IdFlights.Add(i); // добавить в очередь на посадку
                 }
             }
             if ((IdFlights.Count>0)&& (this.FreeDocks > 1))  // если есть самолеты на посадку и свободный док
@@ -168,7 +175,7 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
                 for (int j= 0; j < IdFlights.Count; j++)  // Поиск рейса с максимальным приоритетом 
                 {
                     int newPriority = (10 - Convert.ToInt32(listFlights[IdFlights[j]].FlightTime)) + listFlights[IdFlights[j]].Board.Priority;
-                    if (newPriority > priority) {
+                    if (newPriority > priority) {  // если приоритет текушего самолета выше поставить на посадку
                         priority = newPriority;
                         id = IdFlights[j];
                     };

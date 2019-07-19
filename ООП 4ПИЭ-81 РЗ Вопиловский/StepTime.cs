@@ -22,7 +22,7 @@ namespace ООП_4ПИЭ_81_РЗ_Вопиловский
 
     public int STime { get { return this.sTime; } }  // текуший временной шаг
 
-    public void step() // сделать временной шаг
+    public void step() // сделать временной шаг 
     {
       for (int i=0; i< listAirports.Count; i++)
       {
